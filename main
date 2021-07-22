@@ -1,0 +1,3 @@
+1、把虚拟机的目录通过samba服务映射到windows的网络盘之后，想要在网络盘里面通过git克隆项目，但是报cloen successed,check fail.
+   解决方法：保证该目录下有足够的空间，然后设置git的设置（1） git config --global core.protectNTFS false （2）git config core.longpaths true
+   该问题出现的原因应该是当时上传是在windows上传，然后git有文件格式的保护，linux下面对于windowsNTFS文件系统的保护，就克隆失败了。
