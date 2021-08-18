@@ -1,3 +1,19 @@
-1、把虚拟机的目录通过samba服务映射到windows的网络盘之后，想要在网络盘里面通过git克隆项目，但是报cloen successed,check fail.
+第一个问题：
+   问题描述：把虚拟机的目录通过samba服务映射到windows的网络盘之后，想要在网络盘里面通过git克隆项目，但是报cloen successed,check fail.
    解决方法：保证该目录下有足够的空间，然后设置git的设置（1） git config --global core.protectNTFS false （2）git config core.longpaths true
    该问题出现的原因应该是当时上传是在windows上传，然后git有文件格式的保护，linux下面对于windowsNTFS文件系统的保护，就克隆失败了。
+   
+第二个问题：
+   问题描述：在gitee上面下载了压缩包之后，想要在本地上面和远端进行绑定的操作步骤，该压缩包还经过修改的。
+   解决办法：在该压缩包解压之后的目录下执行以下命令：
+            1、git init                                                                初始化该目录成为一个git仓库,初始化成功之后会本地处于master分支
+            2、git remote add origin URL（该项目的gitee地址，https的，ssh的还没试过）   添加远端的地址，推送以及合并的地址都为URL       
+            3、git pull                                                                把远端的分支都拉下来
+            4、git checkout -b masterTemp                                              切换到一个备用分支，为以后stash做准备
+            5、touch test.txt                                                          随便新建一个文件用于commit
+            6、git add *                                                               把所有的文件都加入git的管理中，为以后stash做准备
+            7、git commit test.txt                                                     把test.txt提交上去，建立一个有提交的分支，才能git stash其他文件
+            8、git stash                                                               把其他的文件都放入暂存区里面
+            8、git checkout --track origin/master                                      重新切回去master分支，切去其他也可以，只要是远端有的分支
+            9、git stash pop                                                           把暂存区的文件都弹出来
+            经过上面的步骤就可以成功的绑定到远端的git进行管理，弹出之后如果有冲突的话就解决掉，之后就可以正常的使用了。
