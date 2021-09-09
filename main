@@ -17,3 +17,12 @@
             8、git checkout --track origin/master                                      重新切回去master分支，切去其他也可以，只要是远端有的分支
             9、git stash pop                                                           把暂存区的文件都弹出来
             经过上面的步骤就可以成功的绑定到远端的git进行管理，弹出之后如果有冲突的话就解决掉，之后就可以正常的使用了。
+            
+第三个问题：
+   问题描述：在redhat系统上的git stash时报错 fatal: BUG: your vsnprintf is broken (returned -1)
+   解决方法：1、注意系统的编码，需要使用utf-8的编码
+             2、在.git目录下的config文件中加入配置项：
+               [user]
+                  email = ljb
+                  name = ljb
+                这个配置项内容可以随便配置，但是一定要两项都有。配置好之后就可以进行正常操作了。
