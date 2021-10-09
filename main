@@ -26,3 +26,10 @@
                   email = ljb
                   name = ljb
                 这个配置项内容可以随便配置，但是一定要两项都有。配置好之后就可以进行正常操作了。
+                
+第四个问题：
+   问题描述：ubuntu20.04环境下使用SecureCRT登录时报错key exchange fail.
+   解决方法：在/etc/ssh/sshd_config文件中加入
+             KexAlgorithms curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1,diffie-hellman-group1-sha1
+             然后重启 /etc/init.d/ssh restart即可解决问题。
+             具体解决的参考链接：https://zhuanlan.zhihu.com/p/358671357
