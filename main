@@ -18,6 +18,10 @@
             9、git stash pop                                                           把暂存区的文件都弹出来
             经过上面的步骤就可以成功的绑定到远端的git进行管理，弹出之后如果有冲突的话就解决掉，之后就可以正常的使用了。
             
+ 第二个问题验证解决方法无效！！！！！！           
+            
+ 
+            
 第三个问题：
    问题描述：在redhat系统上的git stash时报错 fatal: BUG: your vsnprintf is broken (returned -1)
    解决方法：1、注意系统的编码，需要使用utf-8的编码
